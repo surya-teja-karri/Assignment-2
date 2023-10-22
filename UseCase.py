@@ -120,3 +120,37 @@ def check_for_anomaly(date, impressions):
 
     return result
 
+# Create a Streamlit app
+st.title("Snowflake Data Analysis")
+
+# Sidebar for selecting the analysis option
+analysis_option = st.sidebar.radio("Select Analysis Option", ["Actual Data", "Forecast Data", "Anomaly Detection"])
+
+if analysis_option == "Actual Data":
+    st.subheader("Actual Data")
+    actual_data = get_actual_data()
+    st.dataframe(actual_data)
+
+elif analysis_option == "Forecast Data":
+    st.subheader("Forecasted Data")
+    forecast_data = get_forecast_data()
+    st.dataframe(forecast_data)
+
+else:
+    st.subheader("Anomaly Detection")
+    date = st.text_input("Enter Date (YYYY-MM-DD):")
+    impressions = st.number_input("Enter Impressions:")
+
+    if st.button("Check for Anomaly"):
+        if date and impressions is not None:
+            anomaly_result = check_for_anomaly(date, impressions)
+            st.write("Anomaly Detection Result:")
+            if len(anomaly_result) > 0:
+                # Display specific columns from the result
+                anomaly_df = pd.DataFrame(anomaly_result, columns=["TS", "Y", "FORECAST", "LOWER_BOUND", "UPPER_BOUND", "IS_ANOMALY", "PERCENTILE", "DISTANCE"])
+                st.dataframe(anomaly_df)
+            else:
+                st.write("No anomaly detected.")
+        else:
+            st.warning("Please enter a valid date and impressions value.")
+
