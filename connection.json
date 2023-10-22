@@ -1,0 +1,9 @@
+{
+  "account"   : "qmhbfok-kqb40312",
+  "user"      : "surya7887",
+  "password"  : "Snowflake!123",
+  "role"      : "ACCOUNTADMIN",
+  "warehouse" : "DASH_L",
+  "database"  : "DASH_DB",
+  "schema"    : "DASH_SCHEMA"
+}

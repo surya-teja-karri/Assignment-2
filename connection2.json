@@ -1,0 +1,9 @@
+{
+    "account"   : "qmhbfok-kqb40312",
+    "user"      : "surya7887",
+    "password"  : "Snowflake!123",
+    "role"      : "ACCOUNTADMIN",
+    "warehouse" : "ML_HOL_WH",
+    "database"  : "ML_HOL_DB",
+    "schema"    : "ML_HOL_SCHEMA"
+  }
